@@ -20,7 +20,7 @@ from pathlib import Path
 
 class IBEXCompanyScrapper:
     def __init__(self):
-        self.make_folders()
+        self._make_folders()
         self.file_path = "data/companies.txt"
         self.all_companies_url = "https://www.infobolsa.es/acciones/ibex35"
         self.company_url = "https://www.infobolsa.es/cotizacion/historico-{company}"
@@ -30,7 +30,10 @@ class IBEXCompanyScrapper:
         self.all_companies_dict = {}
         self.selected_company = ""
 
-    def make_folders(self):
+    def _make_folders(self):
+        """
+        Create the folders '/data' and '/output' where the files are saved.
+        """
         try:
             os.makedirs("data")
             os.makedirs("output")
