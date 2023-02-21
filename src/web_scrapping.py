@@ -11,6 +11,7 @@ __modified__: 07/08/2022
 """
 
 import pprint
+import os
 
 import requests
 import pandas as pd
@@ -19,6 +20,7 @@ from pathlib import Path
 
 class IBEXCompanyScrapper:
     def __init__(self):
+        self.make_folders()
         self.file_path = "data/companies.txt"
         self.all_companies_url = "https://www.infobolsa.es/acciones/ibex35"
         self.company_url = "https://www.infobolsa.es/cotizacion/historico-{company}"
@@ -27,6 +29,13 @@ class IBEXCompanyScrapper:
         self.stock_market_list = self._check_file()
         self.all_companies_dict = {}
         self.selected_company = ""
+
+    def make_folders(self):
+        try:
+            os.makedirs("data")
+            os.makedirs("output")
+        except FileExistsError:
+            pass
 
     def _get_stocks_list(self):
         """
@@ -47,7 +56,7 @@ class IBEXCompanyScrapper:
         with open(self.file_path, "w") as file:
             file_content = file.write(str(companies_list))
 
-        return file_content
+        return companies_list
 
     def _check_file(self):
         """
@@ -61,8 +70,8 @@ class IBEXCompanyScrapper:
         path = Path(self.file_path)
         # Checks if the file exist on that path. In case not, create it.
         if not path.is_file():
-            print("File doesn't exist./nSearching for content")
-            content = self._get_stocks_list()
+            print("File doesn't exist. Searching for content")
+            content = str(self._get_stocks_list())
         else:
             with open(self.file_path, "r") as file:
                 content = file.read()

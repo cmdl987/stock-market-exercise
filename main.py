@@ -12,6 +12,7 @@ __modified__: 07/08/2022
 from src.web_scrapping import IBEXCompanyScrapper
 from src.chart_maker import ChartDrawer
 
+
 if __name__ == "__main__":
     user_company = IBEXCompanyScrapper()
     user_company.select_company()
