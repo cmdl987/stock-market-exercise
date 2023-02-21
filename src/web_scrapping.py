@@ -121,7 +121,6 @@ class IBEXCompanyScrapper:
         daily_results.columns = table_columns
         daily_results["Fecha"] = pd.to_datetime(daily_results["Fecha"], dayfirst=True).dt.tz_localize(None)
         daily_results.sort_values(by="Fecha", ignore_index=True, inplace=True)
-        daily_results.to_csv("data_content.csv")
         return daily_results
 
     def get_company_name(self):
