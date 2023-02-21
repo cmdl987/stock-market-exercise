@@ -43,4 +43,5 @@ Otherwise, the box plot color will be red.
 ***3) Data saving.***
 Not only the chart is showed but an image is saved into the /output folder.
 There it is an example.
+
 ![2023-02-21  REPSOL](https://user-images.githubusercontent.com/59370680/220445716-2b7ca625-7caa-4397-8cec-5bb6e0aa0032.png)
